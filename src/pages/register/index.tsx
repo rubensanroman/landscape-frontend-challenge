@@ -8,10 +8,10 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [age, setAge] = useState('');
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState<{ param: string; msg: string }[]>([]);
   const [success, setSuccess] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     if (phone.trim() !== '') {
@@ -33,8 +33,8 @@ const Register = () => {
 
       setErrors([]);
       setSuccess(true);
-    } catch (error) {
-      if (error.response.status === 422) {
+    } catch (error: any) {
+      if (error.response?.status === 422) {
         setErrors(error.response.data.errors);
         setSuccess(false);
       } else {
