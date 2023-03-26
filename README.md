@@ -1,10 +1,12 @@
 ## Cómo Arrancar la Aplicación
 
-1. Ejecutar `node server.js` en una terminal para iniciar el servidor (express) de validación para el formulario de registro.
+1. Ejecutar `npm install` en la terminal para instalar dependencias.
 
-2. Ejecutar `npm run dev` en otra terminal para iniciar la aplicación cliente en nextjs.
+2. Ejecutar `node server.js` para iniciar el servidor (express) de validación para el formulario de registro.
 
-3. Abrir `http://localhost:3000` en un navegador web para usar la aplicación.
+3. Ejecutar `npm run dev` en otra terminal para iniciar la aplicación cliente en nextjs.
+
+4. Abrir `http://localhost:3000` en un navegador web para usar la aplicación.
 
 ## Funcionalidades
 
