@@ -42,7 +42,7 @@ const Pokemon = ({ pokemon, error }: any) => {
         <h1>{pokemon.name}</h1>
         <div className="data">
           <p>
-            <strong>Altura :</strong> {pokemon.height} cms
+            <strong>Altura :</strong> {pokemon.height / 10} mts
           </p>
           <p>
             <strong>Peso :</strong> {pokemon.weight} kgs
