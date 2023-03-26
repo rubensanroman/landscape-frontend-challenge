@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import styles from '@/styles/Pokemon.module.scss';
 import Navigation from '@/components/Navigation/Navigation';
 
 const Pokemon = () => {
@@ -11,7 +10,7 @@ const Pokemon = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.wrapper}>
+      <div id="wrapper">
         <Navigation currentPage={'pokemon'} />
         <h1>Hola!</h1>
       </div>
