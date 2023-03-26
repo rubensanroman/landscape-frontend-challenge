@@ -19,7 +19,7 @@ app.use(
   [
     body('name').notEmpty(),
     body('email').isEmail(),
-    body('phone').optional().isMobilePhone('es-ES'),
+    body('phone').optional({ nullable: true }),
     body('age').notEmpty().isInt({ min: 18 })
   ],
   (req, res, next) => {
