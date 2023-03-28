@@ -1,45 +1,47 @@
 const express = require('express');
-const { body, validationResult } = require('express-validator');
 const cors = require('cors');
+const { body, validationResult } = require('express-validator');
 
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
+app.use(cors());
 
-app.use(
-  cors({
-    origin: 'http://localhost:3000',
-    credentials: true
-  })
-);
+const PORT = 3030;
 
-app.use(
+app.post(
+  '/validate',
   [
-    body('name').notEmpty(),
-    body('email').isEmail(),
-    body('phone').optional({ nullable: true }),
-    body('age').notEmpty().isInt({ min: 18 })
+    body('name').notEmpty().withMessage('El campo es obligatorio'),
+    body('email')
+      .notEmpty()
+      .withMessage('El campo es obligatorio')
+      .isEmail()
+      .withMessage('El formato del correo electrónico es inválido'),
+    body('phone')
+      .optional({ checkFalsy: true })
+      .isMobilePhone('es-CL')
+      .withMessage('Formato de teléfono es inválido, debería ser +569XXXXXXXX'),
+    body('age')
+      .notEmpty()
+      .withMessage('El campo es obligatorio')
+      .custom((value) => {
+        if (!Number.isInteger(+value) || +value < 18) {
+          throw new Error('Debe ser mayor o igual a 18 años');
+        }
+        return true;
+      })
   ],
-  (req, res, next) => {
+  (req, res) => {
     const errors = validationResult(req);
-
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     }
 
-    next();
+    return res.status(200).json({ message: 'Validación exitosa' });
   }
 );
 
-app.post('/validate', (req, res) => {
-  const { name, email, phone, age } = req.body;
-  res.json({ mensaje: 'Datos enviados correctamente' });
-});
-
-const PORT = process.env.PORT || 3030;
-
 app.listen(PORT, () => {
-  console.log(`Servidor iniciado en puerto ${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
