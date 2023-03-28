@@ -47,58 +47,68 @@ const Register = () => {
       <form id="registration-form" onSubmit={handleSubmit}>
         {success && <div className="success">Success !</div>}
 
-        <label htmlFor="name">* Nombre:</label>
-        <input
-          type="text"
-          id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className={errors.some((e) => e.param === 'name') ? 'error' : ''}
-        />
-        {errors.some((e) => e.param === 'name') ? (
-          <span className="error-message">{errors.find((e) => e.param === 'name')?.msg}</span>
-        ) : null}
+        <div className="field">
+          <label htmlFor="name">* Nombre:</label>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className={errors.some((e) => e.param === 'name') ? 'error' : ''}
+          />
+          {errors.some((e) => e.param === 'name') ? (
+            <span className="error-message">{errors.find((e) => e.param === 'name')?.msg}</span>
+          ) : null}
+        </div>
 
-        <label htmlFor="email">* Correo electrónico:</label>
-        <input
-          type="text"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className={errors.some((e) => e.param === 'email') ? 'error' : ''}
-        />
+        <div className="field">
+          <label htmlFor="email">* Correo electrónico:</label>
+          <input
+            type="text"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className={errors.some((e) => e.param === 'email') ? 'error' : ''}
+          />
 
-        {errors.some((e) => e.param === 'email') ? (
-          <span className="error-message">{errors.find((e) => e.param === 'email')?.msg}</span>
-        ) : null}
+          {errors.some((e) => e.param === 'email') ? (
+            <span className="error-message">{errors.find((e) => e.param === 'email')?.msg}</span>
+          ) : null}
+        </div>
 
-        <label htmlFor="phone">Teléfono:</label>
-        <input
-          type="text"
-          id="phone"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          className={errors.some((e) => e.param === 'phone') ? 'error' : ''}
-        />
+        <div className="field">
+          <label htmlFor="phone">Teléfono:</label>
+          <input
+            type="text"
+            id="phone"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            className={errors.some((e) => e.param === 'phone') ? 'error' : ''}
+          />
 
-        {errors.some((e) => e.param === 'phone') ? (
-          <span className="error-message">{errors.find((e) => e.param === 'phone')?.msg}</span>
-        ) : null}
+          {errors.some((e) => e.param === 'phone') ? (
+            <span className="error-message">{errors.find((e) => e.param === 'phone')?.msg}</span>
+          ) : null}
+        </div>
 
-        <label htmlFor="age">* Edad:</label>
-        <input
-          type="text"
-          id="age"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
-          className={errors.some((e) => e.param === 'age') ? 'error' : ''}
-        />
+        <div className="field">
+          <label htmlFor="age">* Edad:</label>
+          <input
+            type="text"
+            id="age"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+            className={errors.some((e) => e.param === 'age') ? 'error' : ''}
+          />
 
-        {errors.some((e) => e.param === 'age') ? (
-          <span className="error-message">{errors.find((e) => e.param === 'age')?.msg}</span>
-        ) : null}
+          {errors.some((e) => e.param === 'age') ? (
+            <span className="error-message">{errors.find((e) => e.param === 'age')?.msg}</span>
+          ) : null}
+        </div>
 
-        <button type="submit">Enviar</button>
+        <div className="button-wrap">
+          <button type="submit">Enviar</button>
+        </div>
       </form>
     </>
   );
