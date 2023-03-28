@@ -14,15 +14,6 @@ const Register = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    if (phone.trim() !== '') {
-      const phoneRegex = /^\+569\d{8}$/;
-      if (!phoneRegex.test(phone)) {
-        setErrors([{ param: 'phone', msg: 'El formato del teléfono es inválido' }]);
-        setSuccess(false);
-        return;
-      }
-    }
-
     try {
       const response = await axios.post('http://localhost:3030/validate', {
         name,
@@ -64,6 +55,9 @@ const Register = () => {
           onChange={(e) => setName(e.target.value)}
           className={errors.some((e) => e.param === 'name') ? 'error' : ''}
         />
+        {errors.some((e) => e.param === 'name') ? (
+          <span className="error-message">{errors.find((e) => e.param === 'name')?.msg}</span>
+        ) : null}
 
         <label htmlFor="email">* Correo electrónico:</label>
         <input
@@ -74,6 +68,10 @@ const Register = () => {
           className={errors.some((e) => e.param === 'email') ? 'error' : ''}
         />
 
+        {errors.some((e) => e.param === 'email') ? (
+          <span className="error-message">{errors.find((e) => e.param === 'email')?.msg}</span>
+        ) : null}
+
         <label htmlFor="phone">Teléfono:</label>
         <input
           type="text"
@@ -83,7 +81,11 @@ const Register = () => {
           className={errors.some((e) => e.param === 'phone') ? 'error' : ''}
         />
 
-        <label htmlFor="age">* Edad ( Mayor de 18 años requerido ) :</label>
+        {errors.some((e) => e.param === 'phone') ? (
+          <span className="error-message">{errors.find((e) => e.param === 'phone')?.msg}</span>
+        ) : null}
+
+        <label htmlFor="age">* Edad:</label>
         <input
           type="text"
           id="age"
@@ -91,6 +93,10 @@ const Register = () => {
           onChange={(e) => setAge(e.target.value)}
           className={errors.some((e) => e.param === 'age') ? 'error' : ''}
         />
+
+        {errors.some((e) => e.param === 'age') ? (
+          <span className="error-message">{errors.find((e) => e.param === 'age')?.msg}</span>
+        ) : null}
 
         <button type="submit">Enviar</button>
       </form>
