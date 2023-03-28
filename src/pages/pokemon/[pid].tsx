@@ -13,13 +13,10 @@ const Pokemon = ({ pokemon, error }: any) => {
         </Head>
         <Navigation currentPage={'pokemon'} />
 
-        <div id="pokemon">
-          <div className="error">
-            {' '}
-            <Image src={'/not-found.png'} alt="Pokemón no encontrado" width={200} height={200} />
-            <h1>El Pokemón no existe</h1>
-            <Link href="/pokemon">Volver al formulario</Link>
-          </div>
+        <div id="pokemon-search">
+          <Image src={'/not-found.png'} alt="Pokemón no encontrado" width={200} height={200} />
+          <h2>El Pokemón no existe</h2>
+          <Link href="/pokemon">Volver al formulario</Link>
         </div>
       </>
     );
@@ -35,7 +32,7 @@ const Pokemon = ({ pokemon, error }: any) => {
       </Head>
       <Navigation currentPage={'pokemon'} />
 
-      <div id="pokemon">
+      <div id="pokemon-search">
         <div className="pokemon-img">
           <Image src={pokemon.sprites.front_default} alt={pokemon.name} width={200} height={200} />
         </div>
